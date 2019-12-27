@@ -70,7 +70,7 @@
                                 <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" red="0.59949206300000002" green="0.60458336209999997" blue="0.61459682640000002" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="17"/>
-                                <state key="normal" title="Change Text String"/>
+                                <state key="normal" title="Change Font"/>
                                 <connections>
                                     <action selector="didTapFontChange:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zwo-l7-8hT"/>
                                 </connections>

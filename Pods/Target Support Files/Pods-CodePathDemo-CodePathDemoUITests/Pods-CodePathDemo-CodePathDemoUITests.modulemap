@@ -1,0 +1,6 @@
+framework module Pods_CodePathDemo_CodePathDemoUITests {
+  umbrella header "Pods-CodePathDemo-CodePathDemoUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
