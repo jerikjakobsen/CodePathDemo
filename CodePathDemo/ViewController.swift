@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ViewController: UIViewController {
 
@@ -14,21 +15,33 @@ class ViewController: UIViewController {
     @IBOutlet var UserInput: UITextField!
     var backgroundColor: UIColor!
     var textColor: UIColor!
+    @IBOutlet var imageView: UIImageView!
+    var fonts = ["Rockwell","Papyrus","Times New Roman","Charter Roman","Gill Sans SemiBold","PingFang HK Regular","Snell Roundhand","Verdana","Symbol","Snell Roundhand"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         backgroundColor = view.backgroundColor
         textColor = TextLabel.textColor
+       
+    }
+    
+    
+    func generateRandomColor() -> UIColor {
+      let hue : CGFloat = CGFloat(arc4random() % 256) / 256
+      let saturation : CGFloat = CGFloat(arc4random() % 128) / 256 + 0.5
+      let brightness : CGFloat = CGFloat(arc4random() % 128) / 256 + 0.5
+            
+      return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1)
     }
 
     @IBAction func DidTapButton(_ sender: Any) {
-        print("Tapped!")
-        TextLabel.textColor = UIColor.white
+        TextLabel.textColor = generateRandomColor()
     }
     
     @IBAction func DidTapViewColor(_ sender: Any) {
-        view.backgroundColor = UIColor.systemIndigo
+        view.backgroundColor = generateRandomColor()
+        imageView.image = nil
     }
     @IBAction func DidTapTextString(_ sender: Any) {
         if UserInput.text == "" {
@@ -46,6 +59,19 @@ class ViewController: UIViewController {
         TextLabel.text = "Hello World!"
         view.backgroundColor = backgroundColor
         TextLabel.textColor = textColor
+    }
+    @IBAction func DidTapChangeBGImage(_ sender: Any) {
+        let number = Int.random(in: 0 ..< 500)
+        if let url = URL(string: "https://picsum.photos/id/" + String(number) + "/1135/2455") {
+            imageView.sd_setImage(with: url)
+        }
+    }
+    @IBAction func didTapLabelColorChange(_ sender: Any) {
+        TextLabel.backgroundColor = generateRandomColor()
+    }
+    @IBAction func didTapFontChange(_ sender: Any) {
+        let randomNum = Int.random(in: 0 ..< 10)
+        TextLabel.font = UIFont(name: fonts[randomNum], size: 28)
     }
 }
 
