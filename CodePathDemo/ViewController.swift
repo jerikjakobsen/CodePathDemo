@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     var textColor: UIColor!
     var labelColor: UIColor!
     var labelFont: UIFont!
+    @IBOutlet var slider: UISlider!
     @IBOutlet var imageView: UIImageView!
     var fonts = ["Rockwell","Papyrus","Times New Roman","Charter Roman","Gill Sans SemiBold","PingFang HK Regular","Snell Roundhand","Verdana","Symbol","Snell Roundhand"]
     
@@ -74,12 +75,16 @@ class ViewController: UIViewController {
             imageView.sd_setImage(with: url)
         }
     }
+    
     @IBAction func didTapLabelColorChange(_ sender: Any) {
         TextLabel.backgroundColor = generateRandomColor()
     }
     @IBAction func didTapFontChange(_ sender: Any) {
         let randomNum = Int.random(in: 0 ..< 10)
         TextLabel.font = UIFont(name: fonts[randomNum], size: 28)
+    }
+    @IBAction func fontSizeChanged(_ sender: Any) {
+        TextLabel.font = UIFont(name: TextLabel.font.fontName, size: CGFloat(slider!.value))
     }
 }
 
